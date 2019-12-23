@@ -25,6 +25,10 @@ class Session(models.Model):
 
 	hours = fields.Float(string="Duration in hours", compute='_get_hours', inverse='_set_hours')
 
+	attendee_count = fields.Integer(string="Attendees count", compute='_get_attendees_count', store=True)
+
+	color = fields.Integer()
+
 	@api.depends('seats', 'attendee_ids')
 	def _get_end_date(self):
 		for r in self:
@@ -72,13 +76,18 @@ class Session(models.Model):
 			return{
 				'warning':{
 				'title': "To mamy attendees",
-				'message': "Increase seats or remove excess atendees",
+				'message': "Increase seats or remove excess attendees",
 				},
 			}
 
+	@api.depends('attendee_ids')
+	def _get_attendees_count(self):
+		for r in self:
+			r.attendee_count = len(r.attendee_ids)
+
 	@api.constrains('instructor_id', 'attendee_ids')
 
-	def _check_instructor_not_in_atendees(self):
+	def _check_instructor_not_in_attendees(self):
 		for r in self:
 			if r.instructor_id and r.instructor_id in r.attendee_ids:
 				raise exceptions.ValidationError("A session's instructor can't ve an attendee")
