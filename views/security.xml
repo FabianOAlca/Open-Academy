@@ -1,13 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
         <record id="group_manager" model="res.groups">
             <field name="name">OpenAcademy / Manager</field>
         </record>
 
-       <!-- <record id="only_responsible_can_modify" model="ir.rule">
+        <record id="only_responsible_can_modify" model="ir.rule">
             <field name="name">Only Responsible can modify Course</field>
             <field name="model_id" ref="model_openacademy_course"/>
-            <field name="groups" eval="[(4, ref('openacademy.group_manager'))]"/>
+            <field name="groups" eval="[(4, ref('openacademy3.group_manager'))]"/>
             <field name="perm_read" eval="0"/>
             <field name="perm_write" eval="1"/>
             <field name="perm_create" eval="0"/>
@@ -16,6 +17,5 @@
                 ['|', ('responsible_id','=',False),
                       ('responsible_id','=',user.id)]
             </field>
-        </record>
--->
+        </record> 
 </odoo>

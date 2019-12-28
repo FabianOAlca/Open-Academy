@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
 
@@ -122,7 +122,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="session_from_view">
+        <record model="ir.ui.view" id="session_tree_view">
             <field name="name">session.tree</field>
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
@@ -226,8 +226,8 @@
 
         <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" action="session_list_action"/>
 
-        <!-- View of Wizard 
-
+         View of Wizard 
+<!--
          <record model="ir.ui.view" id="wizard_form_view">
             <field name="name">wizard.form</field>
             <field name="model">openacademy.wizard</field>
@@ -253,9 +253,8 @@
                     res_model = "openacademy.wizard"
                     view_mode = "form"
                     target="new"/>
+
 -->
-
-
 
        
  
